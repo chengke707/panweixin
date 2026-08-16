@@ -1,0 +1,5 @@
+# 本地临时文件
+*.pyc
+__pycache__/
+Thumbs.db
+.DS_Store

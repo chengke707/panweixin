@@ -1,0 +1,43 @@
+# 网站自动部署配置
+# 作用：只要把文件上传（推送）到 GitHub 仓库的 main 分支，
+#       GitHub 会自动把网站发布到网上，全程无需任何命令行。
+# 注意：这个文件不要改动、不要删除。
+
+name: Deploy static content to Pages
+
+on:
+  # 每当 main 分支有新文件上传时，自动部署
+  push:
+    branches: ["main"]
+  # 也允许在 GitHub 网页上手动点按钮部署
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署任务，避免冲突
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 把整个仓库文件夹原样发布
+          path: "."
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

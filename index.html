@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="潘伟鑫的个人主页：临床医学准大一新生 × AI 创作者，23 份 AI 技能证书、AI 短剧、音乐与生活。">
+<meta name="theme-color" content="#070B14">
+<title>潘伟鑫 · 个人主页｜临床医学 × AI 创作</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070B14'/%3E%3Cpath d='M6 32 L20 32 L26 18 L32 46 L38 32 L58 32' fill='none' stroke='%2335E0C6' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   配色方案（深色科技风）
+   ============================================================ */
+:root{
+  --bg:#070B14;
+  --bg-2:#0A101E;
+  --surface:#0F1728;
+  --surface-2:#131C30;
+  --line:rgba(150,170,210,.15);
+  --line-strong:rgba(150,170,210,.28);
+  --text:#E8EEF8;
+  --muted:#97A4BC;
+  --cyan:#35E0C6;
+  --cyan-soft:rgba(53,224,198,.11);
+  --gold:#E9B95F;
+  --gold-soft:rgba(233,185,95,.13);
+  --violet:#8B7CF6;
+  --grad:linear-gradient(92deg,#35E0C6 0%,#8B7CF6 100%);
+  --grad-gold:linear-gradient(92deg,#E9B95F 0%,#F2D492 100%);
+  --shadow:0 10px 32px rgba(0,0,0,.45);
+  --glow-cyan:0 0 24px rgba(53,224,198,.22);
+  --glow-gold:0 0 26px rgba(233,185,95,.20);
+  --nav-bg:rgba(7,11,20,.72);
+}
+[data-theme="light"]{
+  --bg:#F5F7FC;
+  --bg-2:#EDF1F8;
+  --surface:#FFFFFF;
+  --surface-2:#F8FAFD;
+  --line:rgba(24,48,96,.12);
+  --line-strong:rgba(24,48,96,.24);
+  --text:#141E34;
+  --muted:#5B6985;
+  --cyan:#0CAF97;
+  --cyan-soft:rgba(12,175,151,.10);
+  --gold:#B9861F;
+  --gold-soft:rgba(185,134,31,.10);
+  --violet:#6C5CE7;
+  --grad:linear-gradient(92deg,#0CAF97 0%,#6C5CE7 100%);
+  --grad-gold:linear-gradient(92deg,#B9861F 0%,#D9A93C 100%);
+  --shadow:0 10px 28px rgba(20,40,90,.10);
+  --glow-cyan:0 0 20px rgba(12,175,151,.16);
+  --glow-gold:0 0 20px rgba(185,134,31,.14);
+  --nav-bg:rgba(255,255,255,.78);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.75;font-size:15.5px;
+  transition:background .3s ease,color .3s ease;
+  overflow-x:hidden;
+}
+/* 背景装饰：网格 + 光晕 */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(140,170,220,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(140,170,220,.045) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%);
+          mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%);
+}
+[data-theme="light"] body::before{background-image:
+  linear-gradient(rgba(20,50,110,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(20,50,110,.05) 1px,transparent 1px)}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(620px 380px at 78% 6%,rgba(53,224,198,.09),transparent 65%),
+    radial-gradient(520px 360px at 12% 22%,rgba(139,124,246,.08),transparent 65%),
+    radial-gradient(600px 400px at 50% 96%,rgba(233,185,95,.06),transparent 65%);
+}
+[data-theme="light"] body::after{
+  background:
+    radial-gradient(620px 380px at 78% 6%,rgba(12,175,151,.10),transparent 65%),
+    radial-gradient(520px 360px at 12% 22%,rgba(108,92,231,.08),transparent 65%);
+}
+::selection{background:rgba(53,224,198,.3)}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ============ 顶部导航 ============ */
+.site-nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--nav-bg);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;gap:20px;
+  max-width:1120px;margin:0 auto;padding:12px 24px;
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.02rem;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:var(--glow-cyan);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.nav-links{
+  display:flex;gap:4px;flex:1;min-width:0;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.92rem;
+  padding:6px 12px;border-radius:8px;white-space:nowrap;
+  transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--cyan);background:var(--cyan-soft)}
+.nav-actions{display:flex;gap:8px;flex-shrink:0}
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;border:1px solid var(--line);
+  background:var(--surface);color:var(--text);font-size:1rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s,transform .15s;
+}
+.icon-btn:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-1px)}
+@media(max-width:760px){
+  .nav-inner{flex-wrap:wrap;gap:8px;padding:10px 16px}
+  .nav-links{order:3;width:100%}
+}
+
+/* ============ 首屏 Hero ============ */
+.hero{position:relative;padding:76px 0 66px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:16px;
+}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--grad)}
+.hero h1{
+  font-size:clamp(2.3rem,5.4vw,3.5rem);font-weight:800;line-height:1.18;
+  letter-spacing:.03em;margin-bottom:14px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-identity{color:var(--muted);font-size:1.02rem;margin-bottom:14px}
+.hero-identity b{color:var(--text);font-weight:600}
+.hero-bio{color:var(--muted);max-width:560px;margin-bottom:22px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.tag{
+  font-size:.83rem;padding:5px 13px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);color:var(--text);
+  transition:border-color .2s,box-shadow .2s;
+}
+.tag:hover{border-color:var(--cyan);box-shadow:var(--glow-cyan)}
+.stat-row{display:flex;flex-wrap:wrap;gap:14px 34px}
+.stat .num{
+  font-size:1.7rem;font-weight:800;line-height:1.2;
+  background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.stat .lbl{font-size:.82rem;color:var(--muted)}
+
+/* 头像卡片 */
+.hero-visual{display:flex;justify-content:center}
+.avatar-frame{
+  position:relative;width:min(320px,84vw);border-radius:22px;padding:14px;
+  background:var(--surface);border:1px solid var(--line-strong);
+  box-shadow:var(--shadow),var(--glow-cyan);
+}
+.avatar-frame img{border-radius:14px;width:100%;height:auto}
+.avatar-plate{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:12px 6px 4px;font-weight:700;font-size:1rem;
+}
+.avatar-plate .en{font-size:.74rem;letter-spacing:.18em;color:var(--muted);font-weight:500}
+.avatar-frame .ecg{
+  position:absolute;left:10px;right:10px;top:-13px;width:calc(100% - 20px);height:26px;
+  color:var(--cyan);filter:drop-shadow(0 0 6px rgba(53,224,198,.8));
+}
+.ecg path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;
+  stroke-dasharray:900;stroke-dashoffset:900;animation:draw 5s linear infinite}
+@keyframes draw{0%{stroke-dashoffset:900}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-900}}
+@media (prefers-reduced-motion:reduce){.ecg path{animation:none;stroke-dashoffset:0}}
+@media(max-width:880px){
+  .hero{padding:48px 0}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-visual{order:-1}
+}
+
+/* ============ 通用区块 ============ */
+.site-section{padding:74px 0;scroll-margin-top:64px}
+.site-section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{margin-bottom:38px;max-width:640px}
+.section-head h2{
+  font-size:clamp(1.55rem,3vw,2rem);font-weight:800;letter-spacing:.02em;margin-bottom:10px;
+}
+.section-head .lead{color:var(--muted);font-size:.96rem}
+
+/* 入场动画 */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============ 亮点 ============ */
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.hl-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:26px 24px;position:relative;overflow:hidden;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.hl-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s;
+}
+.hl-card:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.hl-card:hover::before{opacity:1}
+.hl-card .icon{font-size:1.5rem;margin-bottom:14px}
+.hl-card h3{font-size:1.04rem;margin-bottom:8px}
+.hl-card p{color:var(--muted);font-size:.92rem}
+
+/* ============ 经历时间线 ============ */
+.timeline{max-width:760px}
+.tl-item{position:relative;padding:0 0 34px 34px}
+.tl-item::before{
+  content:'';position:absolute;left:0;top:8px;width:12px;height:12px;border-radius:50%;
+  background:var(--cyan);box-shadow:var(--glow-cyan);border:2px solid var(--bg);
+}
+.tl-item::after{
+  content:'';position:absolute;left:5px;top:24px;bottom:0;width:2px;
+  background:linear-gradient(var(--cyan),var(--gold));
+}
+.tl-item:last-child{padding-bottom:0}
+.tl-item:last-child::after{display:none}
+.tl-time{
+  display:inline-block;font-size:.8rem;color:var(--gold);font-weight:600;
+  padding:3px 12px;border:1px solid var(--gold-soft);background:var(--gold-soft);
+  border-radius:999px;margin-bottom:10px;
+}
+.tl-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+  transition:border-color .25s,box-shadow .25s;
+}
+.tl-card:hover{border-color:var(--line-strong);box-shadow:var(--shadow)}
+.tl-card h3{font-size:1.05rem;margin-bottom:4px}
+.tl-card .sub{color:var(--muted);font-size:.86rem;margin-bottom:12px}
+.tl-card ul{padding-left:20px}
+.tl-card li{color:var(--muted);font-size:.93rem;margin-bottom:7px}
+.tl-card li::marker{color:var(--cyan)}
+
+/* ============ 项目 ============ */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.proj-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.proj-card:hover{transform:translateY(-5px);border-color:var(--cyan);box-shadow:var(--shadow),var(--glow-cyan)}
+.proj-card h3{font-size:1.05rem;margin-bottom:10px}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.proj-tech span{
+  font-size:.76rem;color:var(--cyan);padding:3px 10px;border-radius:999px;
+  background:var(--cyan-soft);border:1px solid transparent;
+}
+.proj-card p{color:var(--muted);font-size:.92rem}
+
+/* ============ 技能 ============ */
+.skill-block{margin-bottom:26px;max-width:760px}
+.skill-block h3{font-size:.98rem;margin-bottom:14px;color:var(--text)}
+.skill-block h3 span{color:var(--muted);font-weight:400;font-size:.82rem;margin-left:8px}
+.skill-item{margin-bottom:12px}
+.skill-label{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:6px;color:var(--muted)}
+.skill-label b{color:var(--text);font-weight:600}
+.skill-bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.skill-fill{
+  height:100%;border-radius:999px;background:var(--grad);width:0;
+  transition:width 1s cubic-bezier(.2,.7,.3,1);
+}
+.reveal.in .skill-fill{width:var(--w)}
+
+/* ============ 教育 ============ */
+.edu-card{
+  display:flex;gap:22px;align-items:flex-start;max-width:760px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;
+  border-left:4px solid var(--gold);transition:box-shadow .25s;
+}
+.edu-card:hover{box-shadow:var(--shadow)}
+.edu-card .icon{font-size:1.7rem;line-height:1}
+.edu-card h3{font-size:1.1rem;margin-bottom:6px}
+.edu-card .meta{font-size:.88rem;color:var(--gold);font-weight:600;margin-bottom:8px}
+.edu-card p{color:var(--muted);font-size:.93rem}
+
+/* ============ 荣誉墙（视觉主角） ============ */
+.honors .section-head{text-align:center;margin-left:auto;margin-right:auto}
+.honors .section-head .eyebrow{justify-content:center}
+.honors .section-head .eyebrow::after{content:'';width:26px;height:2px;background:var(--grad-gold)}
+.honor-wall{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:22px 18px;
+  padding:8px 0;
+}
+.cert-card figure{margin:0}
+.cert-frame{
+  display:block;width:100%;padding:0;border:1px solid rgba(233,185,95,.38);border-radius:12px;
+  background:linear-gradient(160deg,#101726,#0B111E);overflow:hidden;
+  aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;
+  padding:10px;position:relative;
+  transition:transform .3s ease,border-color .3s,box-shadow .3s;
+}
+[data-theme="light"] .cert-frame{background:linear-gradient(160deg,#FFFFFF,#F2F5FA);border-color:rgba(185,134,31,.4)}
+.cert-frame img{
+  max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;
+  transition:transform .35s ease;
+}
+/* 轻微的错落角度，像展柜里的相框 */
+.cert-card:nth-child(3n+1) .cert-frame{transform:rotate(.9deg)}
+.cert-card:nth-child(3n+2) .cert-frame{transform:rotate(-1.1deg)}
+.cert-card:nth-child(3n) .cert-frame{transform:rotate(-.4deg)}
+.cert-card:hover .cert-frame{
+  transform:rotate(0) translateY(-6px);
+  border-color:var(--gold);
+  box-shadow:var(--shadow),var(--glow-gold);
+}
+.cert-card:hover .cert-frame img{transform:scale(1.05)}
+.cert-frame::after{
+  content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;
+  background:linear-gradient(160deg,rgba(233,185,95,.10),transparent 40%);
+}
+.cert-card figcaption{
+  text-align:center;font-size:.82rem;color:var(--muted);margin-top:9px;
+  letter-spacing:.06em;
+}
+.cert-card:hover figcaption{color:var(--gold)}
+.honor-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
+@media(max-width:640px){
+  .honor-wall{grid-template-columns:repeat(2,1fr);gap:16px 12px}
+  .cert-frame{padding:6px}
+  .cert-card figcaption{font-size:.75rem}
+}
+
+/* ============ 生活照片墙 ============ */
+.life-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:14px}
+.life-card{
+  position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+  cursor:zoom-in;padding:0;background:var(--surface);
+}
+.life-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .4s}
+.life-card:hover img{transform:scale(1.06);filter:brightness(1.06)}
+.life-card:nth-child(1){grid-column:span 3;grid-row:span 2}
+.life-card:nth-child(2){grid-column:span 3}
+.life-card:nth-child(3){grid-column:span 2}
+.life-card:nth-child(4){grid-column:span 2}
+.life-card:nth-child(5){grid-column:span 2}
+@media(max-width:640px){
+  .life-grid{grid-auto-rows:110px}
+  .life-card:nth-child(1){grid-column:span 6}
+  .life-card:nth-child(n+2){grid-column:span 3}
+}
+
+/* ============ 联系 / 页脚 ============ */
+.contact-card{
+  max-width:760px;margin:0 auto;text-align:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:44px 32px;
+}
+.contact-card h2{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+.contact-card .lead{color:var(--muted);margin-bottom:26px}
+.contact-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.contact-row .val{
+  font-family:ui-monospace,Consolas,monospace;font-size:.95rem;color:var(--text);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px 16px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;border:none;border-radius:10px;
+  background:var(--grad);color:#06121A;font-weight:700;font-size:.9rem;padding:9px 18px;
+  transition:transform .15s,box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--glow-cyan)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:none}
+.site-footer{
+  border-top:1px solid var(--line);margin-top:74px;padding:26px 0;
+  text-align:center;color:var(--muted);font-size:.85rem;
+}
+.site-footer a{color:var(--cyan);text-decoration:none}
+
+/* ============ 回到顶部 / 提示 ============ */
+.back-top{
+  position:fixed;right:22px;bottom:22px;z-index:90;
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);
+  background:var(--surface);color:var(--text);font-size:1.1rem;
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .25s,transform .25s;
+}
+.back-top.show{opacity:1;pointer-events:auto;transform:none}
+.back-top:hover{color:var(--cyan);border-color:var(--cyan)}
+.toast{
+  position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(10px);
+  background:var(--surface-2);color:var(--text);border:1px solid var(--line-strong);
+  padding:10px 20px;border-radius:12px;font-size:.88rem;z-index:300;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============ 证书大图查看器 ============ */
+.lightbox{
+  position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:rgba(3,6,13,.95);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lb-img-wrap{max-width:min(1100px,92vw);max-height:86vh;display:flex;align-items:center;justify-content:center}
+.lb-img-wrap img{
+  max-width:100%;max-height:84vh;object-fit:contain;border-radius:10px;
+  border:1px solid var(--line-strong);box-shadow:var(--shadow);
+}
+.lb-caption{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+  color:var(--muted);font-size:.85rem;letter-spacing:.08em;text-align:center;
+}
+.lb-btn{
+  position:absolute;width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.07);border:1px solid var(--line-strong);color:#E8EEF8;
+  font-size:1.3rem;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.lb-btn:hover{background:rgba(53,224,198,.18)}
+.lb-close{top:22px;right:22px}
+.lb-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb-next{right:18px;top:50%;transform:translateY(-50%)}
+@media(max-width:640px){
+  .lb-prev{left:8px}.lb-next{right:8px}
+  .lb-btn{width:40px;height:40px}
+}
+
+/* ============ 打印 ============ */
+@media print{
+  .site-nav,.back-top,.lightbox,.hero-visual,.nav-actions,.toast{display:none !important}
+  body{background:#fff !important;color:#000}
+  body::before,body::after{display:none}
+  .site-section.alt{background:#fff}
+  .hl-card,.tl-card,.proj-card,.edu-card,.contact-card{box-shadow:none;break-inside:avoid}
+  .cert-frame{border:1px solid #999;box-shadow:none}
+  .reveal{opacity:1;transform:none}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>潘伟鑫</div>
+    <nav class="nav-links" aria-label="页面导航">
+      <a href="#highlights">亮点</a>
+      <a href="#experience">经历</a>
+      <a href="#projects">项目</a>
+      <a href="#skills">技能</a>
+      <a href="#education">教育</a>
+      <a href="#honors">荣誉</a>
+      <a href="#life">生活</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" title="切换白天/夜间模式" aria-label="切换白天/夜间模式">🌙</button>
+      <button class="icon-btn" id="printBtn" title="打印 / 导出 PDF" aria-label="打印或导出PDF">🖨</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ 首屏 ============ -->
+  <section class="hero" id="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow reveal">Personal Portfolio · 个人主页</div>
+        <h1 class="reveal" style="--d:.08s">潘伟鑫</h1>
+        <p class="hero-identity reveal" style="--d:.14s">
+          贵州毕节 · <b>准大一新生</b> · 遵义医科大学医学与科技学院 <b>临床医学</b>专业 · ESFJ
+        </p>
+        <p class="hero-bio reveal" style="--d:.2s">
+          热爱医学，同时深耕 AI 创作、编程、音乐与短视频。热情开朗、温柔体贴，希望未来在医学领域做出属于自己的成绩。
+        </p>
+        <div class="tag-row reveal" style="--d:.26s" id="tagRow"></div>
+        <div class="stat-row reveal" style="--d:.32s" id="statRow"></div>
+      </div>
+      <div class="hero-visual reveal" style="--d:.2s">
+        <div class="avatar-frame">
+          <svg class="ecg" viewBox="0 0 320 60" aria-hidden="true">
+            <path d="M0 30 L58 30 L76 30 L88 12 L100 48 L112 30 L138 30 L156 30 L168 18 L180 42 L192 30 L218 30 L236 30 L248 22 L260 38 L272 30 L320 30"/>
+          </svg>
+          <img src="assets/img/avatar.jpg" alt="潘伟鑫的 AI 虚拟形象" width="704" height="1504">
+          <div class="avatar-plate"><span>潘伟鑫</span><span class="en">PAN WEIXIN</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 亮点 ============ -->
+  <section class="site-section" id="highlights">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Highlights · 亮点</div>
+        <h2>亮点成果</h2>
+        <p class="lead">这个暑假，用 AI 打开了一扇新的大门。</p>
+      </div>
+      <div class="hl-grid" id="hlGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 经历 ============ -->
+  <section class="site-section alt" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experience · 经历</div>
+        <h2>个人经历</h2>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ============ 项目 ============ -->
+  <section class="site-section" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Projects · 项目</div>
+        <h2>项目作品</h2>
+        <p class="lead">从想法到落地，用 AI 快速做出自己的作品。</p>
+      </div>
+      <div class="proj-grid" id="projGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 技能 ============ -->
+  <section class="site-section alt" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Skills · 技能</div>
+        <h2>技能矩阵</h2>
+      </div>
+      <div id="skillWrap"></div>
+    </div>
+  </section>
+
+  <!-- ============ 教育 ============ -->
+  <section class="site-section" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Education · 教育</div>
+        <h2>教育背景</h2>
+      </div>
+      <div class="edu-card reveal">
+        <div class="icon">🩺</div>
+        <div>
+          <h3>遵义医科大学医学与科技学院</h3>
+          <div class="meta">临床医学 · 2026年9月 即将入学</div>
+          <p>准大一新生；立志深耕临床医学领域，探索医学与人工智能的交叉应用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 荣誉墙 ============ -->
+  <section class="site-section alt honors" id="honors">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Honor Wall · 荣誉墙</div>
+        <h2>AI 技能证书</h2>
+        <p class="lead" id="honorLead"></p>
+      </div>
+      <div class="honor-wall" id="honorWall"></div>
+      <p class="honor-note">点击任意证书，可查看高清大图 · 左右切换</p>
+    </div>
+  </section>
+
+  <!-- ============ 生活 ============ -->
+  <section class="site-section" id="life">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Life · 生活</div>
+        <h2>日常生活</h2>
+        <p class="lead">镜头里的日常碎片。</p>
+      </div>
+      <div class="life-grid" id="lifeGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 联系 ============ -->
+  <section class="site-section" id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>联系我</h2>
+        <p class="lead">欢迎交流：AI 创作、医学学习、音乐，或者只是聊聊天。</p>
+        <div class="contact-row">
+          <span class="val" id="emailVal"></span>
+          <button class="btn" id="copyEmailBtn">📋 复制邮箱</button>
+        </div>
+        <div class="contact-row" id="wechatRow" hidden>
+          <span class="val" id="wechatVal"></span>
+          <button class="btn ghost" id="copyWechatBtn">📋 复制微信号</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span id="yearSpan"></span> 潘伟鑫 · 最后更新：<span id="updateSpan"></span> · 本站托管于 <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+<div class="toast" id="toast" role="status"></div>
+
+<!-- ============ 证书大图查看器 ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片查看器">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="关闭">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="上一张">‹</button>
+  <div class="lb-img-wrap"><img id="lbImg" src="" alt=""></div>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="下一张">›</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  ★★★★★  改这里！网站全部文字内容都在下面这一个地方  ★★★★★   ║
+   ║  改名字、改介绍、改邮箱，只动这个 PROFILE 就行，别的不用碰    ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+const PROFILE = {
+  name: "潘伟鑫",
+
+  /* 邮箱：把下面的内容换成你的真实邮箱（注意保留引号） */
+  email: "panweixin@example.com",
+
+  /* 微信号：填了之后，"联系我"区域会自动出现"复制微信号"按钮；不想显示就留空 "" */
+  wechat: "",
+
+  /* 首页一句话介绍 */
+  identity: "贵州毕节 · 准大一新生 · 遵义医科大学医学与科技学院 临床医学专业 · ESFJ",
+
+  /* 个人简介 */
+  bio: "热爱医学，同时深耕 AI 创作、编程、音乐与短视频。热情开朗、温柔体贴，希望未来在医学领域做出属于自己的成绩。",
+
+  /* 兴趣标签 */
+  tags: ["唱歌", "吉他", "AI短剧", "AI开发", "PPT制作", "小游戏开发", "AI音乐", "个人网站", "知识库搭建"],
+
+  /* 数字成就（金黄色的那排数字） */
+  stats: [
+    { num: "23",  lbl: "AI 技能证书" },
+    { num: "5+",  lbl: "实践项目" },
+    { num: "ESFJ", lbl: "人格类型" },
+    { num: "2026", lbl: "临床医学启程" }
+  ],
+
+  /* 亮点成果（4张卡片） */
+  highlights: [
+    { icon: "🏅", title: "23 份 AI 技能证书", desc: "暑假系统学习各类 AI 工具并考取证书，掌握完整的 AI 工作流" },
+    { icon: "🤖", title: "原创 AI 虚拟形象", desc: "独立设计自创 AI 形象，落地到短视频内容创作" },
+    { icon: "⚡", title: "AI 综合生产力实践", desc: "AI-PPT、个人网站、知识库、小游戏原型、AI 音乐生成" },
+    { icon: "🎸", title: "多元才艺", desc: "吉他弹唱、短剧脚本创作；兼顾医学预习，探索「医学 + AI」交叉方向" }
+  ],
+
+  /* 个人经历（时间线） */
+  experience: [
+    {
+      time: "2026.07 — 2026.08",
+      title: "暑期自主学习实践",
+      sub: "AI 工具 × 内容创作",
+      points: [
+        "系统学习各类 AI 工具，考取 23 份 AI 技能证书",
+        "完成原创 AI 虚拟形象，开展 AI 短剧脚本创作",
+        "动手实践 AI-PPT、静态个人网站、知识库、小游戏原型、AI 音乐",
+        "预习临床医学课程，建立医学与 AI 结合的思考视角"
+      ]
+    },
+    {
+      time: "2026.09 即将入学",
+      title: "临床医学 · 新征程",
+      sub: "遵义医科大学医学与科技学院",
+      points: [
+        "进入临床医学专业，开启系统医学学习",
+        "立志深耕医学领域，探索医学与人工智能的交叉应用"
+      ]
+    }
+  ],
+
+  /* 项目作品 */
+  projects: [
+    { name: "个人简历网页", tech: ["HTML", "CSS", "原生JS"], desc: "单页响应式简历网站，深色/浅色切换，荣誉证书墙，支持打印 PDF 导出" },
+    { name: "个人 AI 知识库", tech: ["AI工具", "文档结构化"], desc: "搭建个人学习知识库，沉淀技术与医学学习资料，方便检索复盘" },
+    { name: "AI 小游戏原型", tech: ["AI辅助编码"], desc: "快速实现小游戏原型，完成逻辑调试与交互体验优化" },
+    { name: "AI 音乐与短剧脚本", tech: ["AI生成", "二次打磨"], desc: "生成音乐片段；独立构思打磨 AI 短剧故事脚本" },
+    { name: "AI 自动 PPT 制作", tech: ["大模型", "排版优化"], desc: "借助 AI 快速生成演示文稿，人工优化版式表达" }
+  ],
+
+  /* 技能（0-100 的数字代表熟练度，可以按自己情况改） */
+  skills: [
+    { group: "AI 工具与内容创作", items: [
+      { name: "AI 各类工具与证书训练", value: 80 },
+      { name: "AI 短剧脚本创作", value: 72 },
+      { name: "AI 音乐 / AI-PPT", value: 70 },
+      { name: "个人知识库搭建整理", value: 75 }
+    ]},
+    { group: "前端与程序实践", items: [
+      { name: "HTML / CSS / 原生 JS", value: 62 },
+      { name: "AI 辅助编码与调试", value: 68 }
+    ]},
+    { group: "才艺表达", items: [
+      { name: "吉他、唱歌", value: 76 },
+      { name: "文案构思内容表达", value: 74 }
+    ]},
+    { group: "医学学习方向", items: [
+      { name: "临床医学课程预习", value: 60 }
+    ]}
+  ],
+
+  /* ── 荣誉证书墙 ─────────────────────────────────────────────
+     照片放在 assets/img/certs/ 文件夹里，命名是 cert-01.jpg、
+     cert-02.jpg …… 按顺序排列。证书总数：23 份（下面写 23），
+     实际展示 22 张照片（certCount 写 22）。
+     以后补拍了第 23 张：把照片放进 certs 文件夹，命名 cert-23.jpg，
+     再把 certCount 改成 23 就行。
+     想给某张证书写具体名字（比如"豆包AI认证"），在 certTitles
+     里加一行，例如： 1: "豆包 AI 技能认证",  */
+  certTotal: 23,
+  certCount: 22,
+  certTitles: {},
+
+  /* 日常生活照片（assets/img/life/ 文件夹，life-01.jpg 起） */
+  lifeCount: 5
+};
+
+/* ════════════════════════════════════════════════
+   下面是渲染代码，一般不需要动
+   ════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+
+/* —— 首屏标签与数字 —— */
+const tagRow = $("tagRow");
+PROFILE.tags.forEach(t => {
+  const s = document.createElement("span");
+  s.className = "tag"; s.textContent = t;
+  tagRow.appendChild(s);
+});
+const statRow = $("statRow");
+PROFILE.stats.forEach(st => {
+  const d = document.createElement("div");
+  d.className = "stat";
+  d.innerHTML = `<div class="num">${st.num}</div><div class="lbl">${st.lbl}</div>`;
+  statRow.appendChild(d);
+});
+
+/* —— 亮点卡片 —— */
+const hlGrid = $("hlGrid");
+PROFILE.highlights.forEach((h, i) => {
+  const d = document.createElement("div");
+  d.className = "hl-card reveal";
+  d.style.setProperty("--d", (i * 0.08) + "s");
+  d.innerHTML = `<div class="icon">${h.icon}</div><h3>${h.title}</h3><p>${h.desc}</p>`;
+  hlGrid.appendChild(d);
+});
+
+/* —— 经历时间线 —— */
+const timeline = $("timeline");
+PROFILE.experience.forEach((e, i) => {
+  const d = document.createElement("div");
+  d.className = "tl-item reveal";
+  d.style.setProperty("--d", (i * 0.1) + "s");
+  d.innerHTML = `
+    <div class="tl-time">${e.time}</div>
+    <div class="tl-card">
+      <h3>${e.title}</h3>
+      <div class="sub">${e.sub}</div>
+      <ul>${e.points.map(p => `<li>${p}</li>`).join("")}</ul>
+    </div>`;
+  timeline.appendChild(d);
+});
+
+/* —— 项目卡片 —— */
+const projGrid = $("projGrid");
+PROFILE.projects.forEach((p, i) => {
+  const d = document.createElement("div");
+  d.className = "proj-card reveal";
+  d.style.setProperty("--d", (i * 0.07) + "s");
+  d.innerHTML = `
+    <h3>${p.name}</h3>
+    <div class="proj-tech">${p.tech.map(t => `<span>${t}</span>`).join("")}</div>
+    <p>${p.desc}</p>`;
+  projGrid.appendChild(d);
+});
+
+/* —— 技能条 —— */
+const skillWrap = $("skillWrap");
+PROFILE.skills.forEach((g, gi) => {
+  const block = document.createElement("div");
+  block.className = "skill-block reveal";
+  block.style.setProperty("--d", (gi * 0.08) + "s");
+  let html = `<h3>${g.group}<span>${g.items.length} 项</span></h3>`;
+  g.items.forEach(s => {
+    html += `
+      <div class="skill-item">
+        <div class="skill-label"><b>${s.name}</b><span>${s.value}%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:${s.value}%"></div></div>
+      </div>`;
+  });
+  block.innerHTML = html;
+  skillWrap.appendChild(block);
+});
+
+/* —— 荣誉墙 —— */
+$("honorLead").textContent = `暑假考取 ${PROFILE.certTotal} 份 AI 技能证书 · 此处精选 ${PROFILE.certCount} 张展示`;
+const honorWall = $("honorWall");
+const certItems = [];   // 供大图查看器使用
+for (let i = 1; i <= PROFILE.certCount; i++) {
+  const title = PROFILE.certTitles[i] || `AI 技能证书 · ${String(i).padStart(2, "0")}`;
+  const src = `assets/img/certs/cert-${String(i).padStart(2, "0")}.jpg`;
+  certItems.push({ src, title });
+  const card = document.createElement("div");
+  card.className = "cert-card reveal";
+  card.style.setProperty("--d", ((i % 4) * 0.06) + "s");
+  card.innerHTML = `
+    <figure>
+      <button class="cert-frame" data-i="${i - 1}" aria-label="查看大图：${title}">
+        <img src="${src}" alt="${title}" loading="lazy">
+      </button>
+      <figcaption>${title}</figcaption>
+    </figure>`;
+  honorWall.appendChild(card);
+}
+
+/* —— 生活照片墙 —— */
+const lifeGrid = $("lifeGrid");
+const lifeItems = [];
+for (let i = 1; i <= PROFILE.lifeCount; i++) {
+  const src = `assets/img/life/life-${String(i).padStart(2, "0")}.jpg`;
+  const title = `日常生活 · ${i}`;
+  lifeItems.push({ src, title });
+  const card = document.createElement("button");
+  card.className = "life-card reveal";
+  card.style.setProperty("--d", ((i - 1) * 0.08) + "s");
+  card.setAttribute("data-i", i - 1);
+  card.setAttribute("aria-label", `查看大图：${title}`);
+  card.innerHTML = `<img src="${src}" alt="${title}" loading="lazy">`;
+  lifeGrid.appendChild(card);
+}
+
+/* —— 大图查看器（证书墙 + 生活照共用） —— */
+const lb = $("lightbox"), lbImg = $("lbImg"), lbCaption = $("lbCaption");
+let lbItems = [], lbIdx = 0;
+function openLightbox(items, idx) {
+  lbItems = items; lbIdx = idx;
+  renderLightbox();
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
+  $("lbClose").focus();
+}
+function renderLightbox() {
+  const it = lbItems[lbIdx];
+  lbImg.src = it.src; lbImg.alt = it.title;
+  lbCaption.textContent = `${it.title}（${lbIdx + 1} / ${lbItems.length}）`;
+}
+function closeLightbox() {
+  lb.classList.remove("open");
+  document.body.style.overflow = "";
+}
+function stepLightbox(dir) {
+  lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+  renderLightbox();
+}
+honorWall.addEventListener("click", e => {
+  const btn = e.target.closest(".cert-frame");
+  if (btn) openLightbox(certItems, Number(btn.dataset.i));
+});
+lifeGrid.addEventListener("click", e => {
+  const card = e.target.closest(".life-card");
+  if (card) openLightbox(lifeItems, Number(card.dataset.i));
+});
+$("lbClose").addEventListener("click", closeLightbox);
+$("lbPrev").addEventListener("click", () => stepLightbox(-1));
+$("lbNext").addEventListener("click", () => stepLightbox(1));
+lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") stepLightbox(-1);
+  if (e.key === "ArrowRight") stepLightbox(1);
+});
+
+/* —— 联系区：邮箱 / 微信 —— */
+$("emailVal").textContent = PROFILE.email;
+if (PROFILE.wechat) {
+  $("wechatRow").hidden = false;
+  $("wechatVal").textContent = PROFILE.wechat;
+}
+
+/* —— 复制按钮 + 提示 —— */
+const toast = $("toast");
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+async function copyText(text, okMsg) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast(okMsg);
+  } catch (err) {
+    showToast("复制失败，请手动复制：" + text);
+  }
+}
+$("copyEmailBtn").addEventListener("click", () => copyText(PROFILE.email, "邮箱已复制 ✓"));
+$("copyWechatBtn").addEventListener("click", () => copyText(PROFILE.wechat, "微信号已复制 ✓"));
+
+/* —— 白天/夜间切换 —— */
+const themeBtn = $("themeBtn");
+const saved = localStorage.getItem("site-theme");
+if (saved) document.documentElement.setAttribute("data-theme", saved);
+function updateThemeIcon() {
+  themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "🌙" : "☀️";
+}
+updateThemeIcon();
+themeBtn.addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("site-theme", next);
+  updateThemeIcon();
+});
+
+/* —— 打印 / 导出 PDF —— */
+$("printBtn").addEventListener("click", () => window.print());
+
+/* —— 回到顶部 —— */
+const backTop = $("backTop");
+window.addEventListener("scroll", () => {
+  backTop.classList.toggle("show", window.scrollY > 400);
+}, { passive: true });
+backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* —— 滚动入场动画 —— */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* —— 年份与更新时间 —— */
+const now = new Date();
+$("yearSpan").textContent = now.getFullYear();
+$("updateSpan").textContent = now.toLocaleDateString("zh-CN");
+</script>
+</body>
+</html>
