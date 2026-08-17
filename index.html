@@ -199,6 +199,23 @@ button{font-family:inherit;cursor:pointer}
 .hl-card h3{font-size:1.04rem;margin-bottom:8px}
 .hl-card p{color:var(--muted);font-size:.92rem}
 
+/* 形象展示卡 */
+.hl-showcase{
+  display:flex;align-items:center;gap:24px;margin-top:16px;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.hl-showcase:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:var(--shadow),0 0 22px rgba(53,224,198,.18)}
+.hl-showcase img{
+  flex-shrink:0;max-height:300px;width:auto;border-radius:12px;border:1px solid var(--line);
+}
+.hl-showcase h3{font-size:1.04rem;margin-bottom:8px}
+.hl-showcase p{color:var(--muted);font-size:.92rem}
+@media(max-width:640px){
+  .hl-showcase{flex-direction:column;text-align:center}
+  .hl-showcase img{max-height:320px;width:auto;max-width:100%}
+}
+
 /* ============ 经历时间线 ============ */
 .timeline{max-width:760px}
 .tl-item{position:relative;padding:0 0 34px 34px}
@@ -513,6 +530,13 @@ button{font-family:inherit;cursor:pointer}
         <p class="lead">这个暑假，用 AI 打开了一扇新的大门。</p>
       </div>
       <div class="hl-grid" id="hlGrid"></div>
+      <div class="hl-showcase reveal">
+        <img src="assets/img/ai-avatar.jpg" alt="潘伟鑫的原创 AI 虚拟形象" width="704" height="1504">
+        <div>
+          <h3>原创 AI 虚拟形象</h3>
+          <p>独立设计的自创 AI 形象，已落地到短视频内容创作。</p>
+        </div>
+      </div>
     </div>
   </section>
 
