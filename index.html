@@ -82,7 +82,14 @@ body::after{
     radial-gradient(620px 380px at 78% 6%,rgba(53,224,198,.09),transparent 65%),
     radial-gradient(520px 360px at 12% 22%,rgba(139,124,246,.08),transparent 65%),
     radial-gradient(600px 400px at 50% 96%,rgba(233,185,95,.06),transparent 65%);
+  animation:aurora 26s ease-in-out infinite alternate;
 }
+@keyframes aurora{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(1.6%,-1.2%,0) scale(1.05)}
+  100%{transform:translate3d(-1.6%,1.2%,0) scale(1)}
+}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}}
 [data-theme="light"] body::after{
   background:
     radial-gradient(620px 380px at 78% 6%,rgba(12,175,151,.10),transparent 65%),
@@ -182,6 +189,12 @@ button{font-family:inherit;cursor:pointer}
   position:absolute;left:10px;right:10px;top:-13px;width:calc(100% - 20px);height:26px;
   color:var(--cyan);filter:drop-shadow(0 0 6px rgba(53,224,198,.8));
 }
+/* 四角科技角标 */
+.avatar-frame .corner{position:absolute;width:16px;height:16px;pointer-events:none;z-index:2}
+.corner.tl{top:10px;left:10px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);border-top-left-radius:8px}
+.corner.tr{top:10px;right:10px;border-top:2px solid var(--violet);border-right:2px solid var(--violet);border-top-right-radius:8px}
+.corner.bl{bottom:52px;left:10px;border-bottom:2px solid var(--violet);border-left:2px solid var(--violet);border-bottom-left-radius:8px}
+.corner.br{bottom:52px;right:10px;border-bottom:2px solid var(--cyan);border-right:2px solid var(--cyan);border-bottom-right-radius:8px}
 .ecg path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;
   stroke-dasharray:900;stroke-dashoffset:900;animation:draw 5s linear infinite}
 @keyframes draw{0%{stroke-dashoffset:900}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-900}}
@@ -197,7 +210,20 @@ button{font-family:inherit;cursor:pointer}
 .site-section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .section-head{margin-bottom:38px;max-width:640px}
 .section-head h2{
-  font-size:clamp(1.55rem,3vw,2rem);font-weight:800;letter-spacing:.02em;margin-bottom:10px;
+  font-size:clamp(1.55rem,3vw,2rem);font-weight:800;letter-spacing:.02em;margin-bottom:14px;
+  position:relative;padding-bottom:16px;
+}
+.section-head h2::after{
+  content:'';position:absolute;left:0;bottom:0;width:60px;height:3px;border-radius:3px;
+  background:var(--grad);box-shadow:var(--glow-cyan);
+}
+.honors .section-head h2::after{left:50%;transform:translateX(-50%)}
+.sec-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:9px;margin-right:10px;flex-shrink:0;
+  font-size:.78rem;font-weight:700;color:var(--cyan);font-variant-numeric:tabular-nums;
+  border:1px solid var(--line-strong);background:var(--surface);
+  box-shadow:var(--glow-cyan);
 }
 .section-head .lead{color:var(--muted);font-size:.96rem}
 
@@ -347,6 +373,13 @@ button{font-family:inherit;cursor:pointer}
 }
 .life-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .4s}
 .life-card:hover img{transform:scale(1.06);filter:brightness(1.06)}
+.life-card::after{
+  content:'🔍 查看大图';position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:12px;font-size:.82rem;color:#fff;letter-spacing:.08em;
+  background:linear-gradient(transparent 52%,rgba(3,6,13,.75));
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.life-card:hover::after,.life-card:focus-visible::after{opacity:1}
 .life-card:nth-child(1){grid-column:span 3;grid-row:span 2}
 .life-card:nth-child(2){grid-column:span 3}
 .life-card:nth-child(3){grid-column:span 2}
@@ -356,6 +389,79 @@ button{font-family:inherit;cursor:pointer}
   .life-grid{grid-auto-rows:110px}
   .life-card:nth-child(1){grid-column:span 6}
   .life-card:nth-child(n+2){grid-column:span 3}
+}
+
+/* ============ AI 音乐舞台 ============ */
+.music-sec{
+  position:relative;
+  background:
+    radial-gradient(720px 420px at 50% 0%,rgba(53,224,198,.07),transparent 60%),
+    radial-gradient(640px 400px at 50% 100%,rgba(139,124,246,.07),transparent 60%),
+    var(--bg-2);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+[data-theme="light"] .music-sec{
+  background:
+    radial-gradient(720px 420px at 50% 0%,rgba(12,175,151,.08),transparent 60%),
+    radial-gradient(640px 400px at 50% 100%,rgba(108,92,231,.07),transparent 60%),
+    var(--bg-2);
+}
+.music-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:46px;flex-wrap:wrap}
+.eq{display:flex;gap:6px;align-items:flex-end;height:150px;padding:0 4px}
+.eq span{
+  width:7px;border-radius:4px;opacity:.85;
+  background:linear-gradient(180deg,var(--cyan),var(--violet));
+  animation:eq-bounce 1.15s ease-in-out infinite alternate;
+  transform-origin:bottom;
+}
+.eq span:nth-child(1){height:38%;animation-delay:.05s}
+.eq span:nth-child(2){height:70%;animation-delay:.3s}
+.eq span:nth-child(3){height:52%;animation-delay:.15s}
+.eq span:nth-child(4){height:92%;animation-delay:.45s}
+.eq span:nth-child(5){height:60%;animation-delay:.25s}
+.eq span:nth-child(6){height:80%;animation-delay:.5s}
+.eq span:nth-child(7){height:44%;animation-delay:.1s}
+@keyframes eq-bounce{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.eq span{animation:none}}
+.music-note{position:absolute;font-size:1.6rem;color:var(--cyan);opacity:.35;pointer-events:none;
+  animation:note-float 6s ease-in-out infinite}
+.music-note.n2{color:var(--violet);right:13%;top:16%;animation-delay:1.4s;font-size:1.2rem}
+.music-note.n3{color:var(--gold);left:14%;bottom:14%;animation-delay:2.6s;font-size:1rem}
+@keyframes note-float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+@media (prefers-reduced-motion:reduce){.music-note{animation:none}}
+.music-card{
+  position:relative;border-radius:22px;padding:3px;
+  background:linear-gradient(150deg,rgba(53,224,198,.55),rgba(139,124,246,.45),rgba(233,185,95,.42));
+  box-shadow:var(--shadow),0 0 44px rgba(53,224,198,.15),0 0 44px rgba(139,124,246,.13);
+}
+[data-theme="light"] .music-card{
+  background:linear-gradient(150deg,rgba(12,175,151,.5),rgba(108,92,231,.42),rgba(185,134,31,.38));
+}
+.music-inner{position:relative;border-radius:19px;overflow:hidden;background:var(--bg);padding:10px}
+.music-inner video{
+  height:min(560px,70vh);width:auto;max-width:100%;border-radius:12px;display:block;background:#000;
+}
+.sound-btn{
+  position:absolute;left:50%;bottom:42px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  border:none;border-radius:999px;padding:11px 24px;z-index:3;
+  background:var(--grad);color:#06121A;font-weight:700;font-size:.92rem;
+  box-shadow:var(--glow-cyan),var(--shadow);
+  animation:btn-breathe 2.4s ease-in-out infinite;
+  transition:opacity .5s;
+}
+@keyframes btn-breathe{
+  0%,100%{transform:translateX(-50%) scale(1)}
+  50%{transform:translateX(-50%) scale(1.07)}
+}
+@media (prefers-reduced-motion:reduce){.sound-btn{animation:none}}
+.sound-btn.hide{opacity:0;pointer-events:none}
+.music-caption{text-align:center;color:var(--muted);font-size:.85rem;padding:12px 4px 2px;letter-spacing:.06em}
+.music-caption b{color:var(--gold);font-weight:600}
+@media(max-width:760px){
+  .eq{display:none}
+  .music-note{display:none}
+  .music-inner video{height:auto;width:100%;max-height:72vh}
 }
 
 /* ============ 联系 / 页脚 ============ */
@@ -413,7 +519,9 @@ button{font-family:inherit;cursor:pointer}
 .lb-img-wrap img{
   max-width:100%;max-height:84vh;object-fit:contain;border-radius:10px;
   border:1px solid var(--line-strong);box-shadow:var(--shadow);
+  transform:scale(.94);opacity:0;transition:transform .28s ease,opacity .28s ease;
 }
+.lightbox.open .lb-img-wrap img{transform:scale(1);opacity:1}
 .lb-caption{
   position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
   color:var(--muted);font-size:.85rem;letter-spacing:.08em;text-align:center;
@@ -435,7 +543,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* ============ 打印 ============ */
 @media print{
-  .site-nav,.back-top,.lightbox,.hero-visual,.nav-actions,.toast{display:none !important}
+  .site-nav,.back-top,.lightbox,.hero-visual,.nav-actions,.toast,.music-sec{display:none !important}
   body{background:#fff !important;color:#000}
   body::before,body::after{display:none}
   .site-section.alt{background:#fff}
@@ -456,6 +564,7 @@ button{font-family:inherit;cursor:pointer}
       <a href="#highlights">亮点</a>
       <a href="#experience">经历</a>
       <a href="#projects">项目</a>
+      <a href="#music">音乐</a>
       <a href="#skills">技能</a>
       <a href="#education">教育</a>
       <a href="#honors">荣誉</a>
@@ -491,6 +600,10 @@ button{font-family:inherit;cursor:pointer}
             <path d="M0 30 L58 30 L76 30 L88 12 L100 48 L112 30 L138 30 L156 30 L168 18 L180 42 L192 30 L218 30 L236 30 L248 22 L260 38 L272 30 L320 30"/>
           </svg>
           <img src="assets/img/avatar.jpg" alt="潘伟鑫的照片" width="1600" height="1200">
+          <i class="corner tl" aria-hidden="true"></i>
+          <i class="corner tr" aria-hidden="true"></i>
+          <i class="corner bl" aria-hidden="true"></i>
+          <i class="corner br" aria-hidden="true"></i>
           <div class="avatar-plate"><span>潘伟鑫</span><span class="en">PAN WEIXIN</span></div>
         </div>
       </div>
@@ -501,7 +614,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section" id="highlights">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Highlights · 亮点</div>
+        <div class="eyebrow"><span class="sec-num">01</span>Highlights · 亮点</div>
         <h2>亮点成果</h2>
         <p class="lead">这个暑假，用 AI 打开了一扇新的大门。</p>
       </div>
@@ -513,7 +626,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section alt" id="experience">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Experience · 经历</div>
+        <div class="eyebrow"><span class="sec-num">02</span>Experience · 经历</div>
         <h2>个人经历</h2>
       </div>
       <div class="timeline" id="timeline"></div>
@@ -524,7 +637,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section" id="projects">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Projects · 项目</div>
+        <div class="eyebrow"><span class="sec-num">03</span>Projects · 项目</div>
         <h2>项目作品</h2>
         <p class="lead">从想法到落地，用 AI 快速做出自己的作品。</p>
       </div>
@@ -532,11 +645,36 @@ button{font-family:inherit;cursor:pointer}
     </div>
   </section>
 
+  <!-- ============ AI 音乐 ============ -->
+  <section class="site-section music-sec" id="music">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="sec-num">04</span>AI Music · AI 音乐</div>
+        <h2>AI 音乐作品</h2>
+        <p class="lead">旋律、伴奏由 AI 生成，再一点点打磨——戴上耳机，点击打开声音。</p>
+      </div>
+      <div class="music-stage reveal" style="--d:.15s">
+        <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="music-card">
+          <div class="music-inner">
+            <video id="musicVideo" src="assets/video/ai-music.mp4" poster="assets/img/music-poster.jpg" muted loop playsinline preload="metadata" aria-label="AI 音乐作品视频"></video>
+            <button class="sound-btn" id="soundBtn" type="button">🔊 打开声音</button>
+            <div class="music-caption">🎵 <b>AI 生成</b> · 二次打磨 · 自动循环播放</div>
+          </div>
+        </div>
+        <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <span class="music-note n1" aria-hidden="true">♪</span>
+        <span class="music-note n2" aria-hidden="true">♫</span>
+        <span class="music-note n3" aria-hidden="true">♩</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 技能 ============ -->
   <section class="site-section alt" id="skills">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Skills · 技能</div>
+        <div class="eyebrow"><span class="sec-num">05</span>Skills · 技能</div>
         <h2>技能矩阵</h2>
       </div>
       <div id="skillWrap"></div>
@@ -547,7 +685,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section" id="education">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Education · 教育</div>
+        <div class="eyebrow"><span class="sec-num">06</span>Education · 教育</div>
         <h2>教育背景</h2>
       </div>
       <div class="edu-card reveal">
@@ -565,7 +703,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section alt honors" id="honors">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Honor Wall · 荣誉墙</div>
+        <div class="eyebrow"><span class="sec-num">07</span>Honor Wall · 荣誉墙</div>
         <h2>AI 技能证书</h2>
         <p class="lead" id="honorLead"></p>
       </div>
@@ -578,7 +716,7 @@ button{font-family:inherit;cursor:pointer}
   <section class="site-section" id="life">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Life · 生活</div>
+        <div class="eyebrow"><span class="sec-num">08</span>Life · 生活</div>
         <h2>日常生活</h2>
         <p class="lead">镜头里的日常碎片。</p>
       </div>
@@ -750,6 +888,28 @@ PROFILE.stats.forEach(st => {
   d.className = "stat";
   d.innerHTML = `<div class="num">${st.num}</div><div class="lbl">${st.lbl}</div>`;
   statRow.appendChild(d);
+});
+
+/* —— 数字滚动（滚到首屏时从 0 数上去） —— */
+statRow.querySelectorAll(".num").forEach(el => {
+  const m = el.textContent.match(/^(\d{1,3})(.*)$/);
+  if (!m) return;
+  const target = Number(m[1]), suffix = m[2];
+  const numIO = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      numIO.unobserve(en.target);
+      const t0 = performance.now(), dur = 1500;
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        en.target.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.5 });
+  numIO.observe(el);
 });
 
 /* —— 亮点卡片 —— */
@@ -933,6 +1093,33 @@ themeBtn.addEventListener("click", () => {
 
 /* —— 打印 / 导出 PDF —— */
 $("printBtn").addEventListener("click", () => window.print());
+
+/* —— AI 音乐视频：进来自动循环播画面（静音），点按钮开声音 —— */
+const mv = $("musicVideo"), snd = $("soundBtn");
+let soundOn = false;
+function tryPlayMuted() {
+  mv.muted = true;
+  const p = mv.play();
+  if (p) p.catch(() => {});
+}
+tryPlayMuted();
+mv.addEventListener("loadedmetadata", tryPlayMuted);
+/* 有些手机浏览器第一次打开会拦下自动播放，用户在页面任意点一下后补一次 */
+document.addEventListener("pointerdown", function firstTap() {
+  document.removeEventListener("pointerdown", firstTap);
+  if (!soundOn) tryPlayMuted();
+});
+snd.addEventListener("click", async () => {
+  try {
+    mv.muted = false;
+    await mv.play();
+    soundOn = true;
+    snd.textContent = "🔊 已开启";
+    snd.classList.add("hide");
+  } catch (e) {
+    showToast("请再点一下视频中间的播放键");
+  }
+});
 
 /* —— 回到顶部 —— */
 const backTop = $("backTop");
